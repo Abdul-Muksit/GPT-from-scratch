@@ -4,7 +4,7 @@ from model import GPTLanguageModel
 
 batch_size = 64
 block_size = 256
-max_iters = 5000
+max_iters = 2000
 eval_interval = 500
 learning_rate = 3e-4
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -16,8 +16,13 @@ dropout = 0.2
 
 torch.manual_seed(1337)
 
-data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'input.txt')
-with open(data_path, 'r', encoding='utf-8') as f:
+import os
+import urllib.request
+
+if not os.path.exists('input.txt'):
+    url = 'https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt'
+    urllib.request.urlretrieve(url, 'input.txt')
+with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
 chars = sorted(list(set(text)))
