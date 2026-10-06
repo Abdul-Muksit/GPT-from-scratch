@@ -31,7 +31,7 @@ The project demonstrates the core mechanics of **causal self-attention, Pre-Laye
 ├── requirements.txt
 └── README.md
 ```
-###model.py
+### model.py
 
 Contains the custom implementation of:
 
